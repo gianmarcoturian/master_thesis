@@ -1,0 +1,40 @@
+{{ block styles }}
+    <link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+
+{{ block title }}
+Lottery Choice Results
+{{ endblock }}
+
+{{ block content }}
+
+
+<div class="card card-info">
+
+    Here you choose {{ player.indifference }} as a value that makes you indifferent between Lottery A and B. <br><br>
+
+    {{ if player.overthresh == False }}
+         The computer generated casual number is {{ player.threshold }} which is higher than your choice.<br>
+         {{ if player.risk_payoff == player.indifference }}
+         Lottery B is selected and an unspecified outcome has been drawn. Thus, you gained {{ player.risk_payoff }} points
+         {{ else }}
+         <b>Thus, Lottery B is selected and the draw gives you {{ player.risk_payoff }} points </b>.
+         {{ endif }}
+    {{ else }}
+         The computer generated casual number is {{ player.threshold }} which is equal or lower than your choice.<br>
+         {{ if player.risk_payoff == 0 }}
+         Lottery A is selected and an unspecified outcome has been drawn. Thus, <b>you gained {{ player.risk_payoff }} points</b>.
+         {{ elif player.risk_payoff == 125 }}
+         Lottery A is selected and an unspecified outcome has been drawn. Thus, <b>you gained {{ player.risk_payoff }} points</b>.
+         {{ else }}
+        <b>Thus, Lottery A is selected and the draw gives you {{ player.risk_payoff }} points. </b>
+         {{ endif }}
+    {{ endif }}
+</div>
+<br><br>
+{{ next_button }}
+
+{{ endblock }}
+
+

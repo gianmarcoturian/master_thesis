@@ -1,0 +1,20 @@
+
+    You chose to collect {{ player.boxes_collected }} out of {{ C.NUM_BOXES }} boxes.
+
+
+    <br/>
+
+    The bomb was hidden behind the box in row {{ player.bomb_row }}, column {{ player.bomb_col }}.
+
+    <br/>
+    <br/>
+    {{ if player.bomb }}
+
+        The bomb was among your {{ player.boxes_collected }} collected boxes.<br/>
+        Accordingly, all your earnings in this task were destroyed and your payoff amounts to {{ player.bomb_payoff }} points.
+
+    {{ else }}
+        Your collected boxes did not contain the bomb.<br/>
+        Thus, you receive {{ C.BOX_VALUE }} for each of the {{ player.boxes_collected }} boxes
+        you collected.  <b> Your payoff amounts to {{ player.bomb_payoff }} points from this task .</b>
+    {{ endif }}

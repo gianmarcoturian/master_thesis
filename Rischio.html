@@ -1,0 +1,85 @@
+{{ block styles }}
+<link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+{{ block title }}Lottery Choice{{ endblock }}
+
+{{ block content }}
+
+<head>
+<style>
+.row {
+  margin-left:-1px;
+  margin-right:-1px;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  padding: 4px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table, td, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td, th {
+  text-align: center;
+  width:25%;
+}
+</style>
+</head>
+<div class="instructions">
+<div>
+In this part of the experiment you will face two Lotteries, Lottery A and Lottery B. <br> <br>
+In Lottery A, different outcomes might be drawn: 40 points, 70 points or 100 points.
+Their relative likelihoods are displayed below each outcome in the table.
+    <b>Moreover, note that there might be multiple unspecified {{ if player.positive == True }}
+      <span style="background-color: #FFFF00"> positive </span>{{ endif }} outcomes.</b>
+They are displayed as "???" in the table. <br> <br>
+Lottery B has the same well specified outcomes and relative likelihoods of Lottery A,
+but differs in case an unspecified outcome happens.
+    <br>
+In lottery B, if an unspecified outcome occurs – and only in this case -
+you will receive a fixed payment independently from what unspecified outcome realizes. <br>
+<b>Your task is to indicate such a fixed payment</b>.
+The amount you indicated as a fixed payment should make you indifferent
+between Lottery A and Lottery B. <br><br> <b>Hint:</b> Think if you would prefer Lottery B with the 0 as fixed payment to the Lottery A.
+    If you prefer the Lottery A, increase the amount until you find a value where you are not sure which lottery you prefer.
+    This will be the amount that makes you indifferent between the two lotteries. <br>
+       <b>Hint:</b> If you did not understand well how the lotteries work, you should think them as a unique draw. What's different is the realization in case an unspecified outcome occurs.
+    In Lottery A, you earn such outcome. In Lottery B, you earn the amount of fixed payment you indicated.
+<br><br>
+    Once you made your decision indeed, the computer generates a casual number.
+If the computer generated casual number is higher than the amount you indicate as fixed payment,
+Lottery B is selected and you  receive a payoff according to a random drawn from it.
+Remember, if an unspecified outcome occurs, the amount you indicated as fixed payment realizes.
+<br>
+Otherwise, if the computer generated casual number is equal or lower than the amount you indicated,
+an extraction from Lottery A will happen. <br>
+For instance, if you choose 70 as a fixed payment in case of unspecified outcome
+for Lottery B and the casual number generated is 90, an extraction from Lottery B will happen.    <br>
+ Instead, if the casual number generated is, say, 30, an extraction from Lottery A will happen. <br>
+<b>The results will be displayed at the end of the experiment.</b><br>
+Please, answer the following attention check to be sure you understand the instructions.
+    <br> <i>{{ formfield 'att_check1' }} </i>
+</div>
+
+<img src="https://i.imgur.com/P3aCet8.png" style="width:700px;height:230px;">
+
+{{ formfield 'indifference' }}
+<br><br><br>
+{{ formfield 'prob_risk' }}
+<br><br><br>
+</div>
+{{ next_button }}
+
+{{ endblock }}
+

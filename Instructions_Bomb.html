@@ -1,0 +1,51 @@
+{{ block styles }}
+<link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+
+{{ block title }}
+Bomb Game Instructions
+{{ endblock }}
+
+{{ block content }}
+
+<div class="instructions">
+
+        <p>
+            In the following, you will see a {{ C.NUM_ROWS }}x{{ C.NUM_COLS }}-matrix containing
+            {{ C.NUM_BOXES }} boxes on your screen.
+        </p>
+
+        {{ if C.RANDOM }}
+        <p>
+            As soon as you start the task by hitting the 'Start' button,
+            one of the boxes is collected per {{ C.TIME_INTERVAL }} second(s) at random.
+            Once collected, the box is marked by a tick symbol.
+            For each box collected you earn {{ C.BOX_VALUE }}.
+        </p>
+        {{ else }}
+        <p>
+            You collect a box by clicking on it. Once collected, the box is marked by a tick symbol.
+            At any point, you can undo your action by clicking again on the box.
+            For each box collected you earn {{ C.BOX_VALUE }}.
+        </p>
+        {{ endif }}
+
+         <p>
+            Behind one of the boxes hides a bomb that destroys everything that has been collected.
+            The remaining 63 boxes are worth {{ C.BOX_VALUE }} each.
+            You do not know where the bomb is located.
+            You only know that the bomb can be in any place with equal probability.
+        </p>
+        <p>
+            Your task is to choose when to stop the collecting process. You do so by hitting 'Next' at any time.
+            Once you click the 'Next' button, you are not able anymore to collect more boxes and you are automatically dealt in on the next phase.
+        </p>
+        <p>
+            <b>The results will be displayed at the end of the experiment</b>. In particular, you will not know if you collect the bomb or not until the end.
+
+        </p>
+</div>
+
+{{ next_button }}
+{{ endblock }}

@@ -1,0 +1,18 @@
+{{ block styles }}
+    <link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+{{ block title }}
+Final Results
+{{ endblock }}
+{{ block content }}
+    <div class="card card-info">
+
+<b>Your payoff in the word search game is {{ player.score }} points !</b> <br>
+        Since you gained {{ player.bomb_payoff }} points from the first task,
+         {{ player.risk_payoff }} points from the second task and
+        {{ player.inv_payoff }} points from the Investment Decision task, <b>your total payoff is {{ player.payoff }}. Congratulation!</b>
+    </div>
+        <br> <br>
+{{ next_button }}
+{{ endblock }}

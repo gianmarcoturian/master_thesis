@@ -1,0 +1,97 @@
+{{ block title }}
+Personality test Survey
+{{ endblock }}
+{{ block content }}
+
+<b>{{ formfield 'unawareness' }} </b>
+<br><br><br>
+
+<p>
+Please evaluate the following statements, to complete the sentence:
+    <b>"I see myself as someone who...</b>".
+</p>
+
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>Disagree strongly</th>
+        <th>Disagree a little</th>
+        <th>Neither agree nor disagree</th>
+        <th>Agree a little</th>
+        <th>Agree strongly</th>
+    </tr>
+
+    <tr>
+        <th> {{ form.q1.label }}</th>
+        {{ for option in form.q1 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q2.label }}</th>
+        {{ for option in form.q2 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q3.label }}</th>
+        {{ for option in form.q3 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q4.label }}</th>
+        {{ for option in form.q4 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q5.label }}</th>
+        {{ for option in form.q5 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q6.label }}</th>
+        {{ for option in form.q6 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q7.label }}</th>
+        {{ for option in form.q7 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q8.label }}</th>
+        {{ for option in form.q8 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q9.label }}</th>
+        {{ for option in form.q9 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+        <tr>
+        <th> {{ form.q10.label }}</th>
+        {{ for option in form.q10 }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+
+{{ next_button }}
+
+<script>
+    // workaround needed until wtforms #615 is published
+    for (let option of document.querySelectorAll('input[type=radio]')) {
+        option.required = 'required';
+    }
+</script>
+
+{{ endblock }}

@@ -1,0 +1,23 @@
+{{ block styles }}
+<link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+{{ block title }}
+Word Game Instructions
+{{ endblock }}
+
+{{ block content }}
+
+<div class="instructions">
+    <p>
+    In the last part of the experiment, you will play a word game. Letters are
+    randomly generated in a 5x5 matrix. Valid words are at least 3 letter long coming from adjacent cells.
+    Hidden words can be found by looking at any direction including diagonal, and can change direction.
+    The same letter can be used more than once.
+    For each word you discover, you will gain five points. You have 3 minutes to discover
+    as many words as you can.
+    </p>
+
+</div>
+{{ next_button }}
+{{ endblock }}

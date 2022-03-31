@@ -1,0 +1,89 @@
+{{ block styles }}
+<link href="{{ static 'bret/css/custom.css' }}" rel="stylesheet"/>
+{{ endblock }}
+
+{{ block title }}Financial Decision Making{{ endblock }}
+
+{{ block content }}
+
+<head>
+<style>
+.row {
+  margin-left:-1px;
+  margin-right:-1px;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  padding: 4px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table, td, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td,th {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="instructions">
+
+Here you receive an endowment of 100 points. You have to choose how much of this points to invest in a project and how much to keep.
+<br><br>The project  might return 0.5 times the amount you invested  (e.g. if you invest 50 and 0.5 realizes, you get 25 points) or 3 times the amount you invested.
+<b> The relative likelihood of 3 is the same as 0.5 </b>.
+Moreover, note that <b>there might be various {{ if player.positive == True }} <span style="background-color: #FFFF00"> positive </span> {{ endif }} unspecified return factors  </b> (they are displayed by a "??" in the table).<br><br>
+
+Assuming that you invest X points in option A, your payoff will be determined as follows: <br>
+<b>X * return factor extracted from A + (100 - X) </b>. <br>
+After your choice, a realization from Lottery A will be extracted and you will be paid accordingly.
+<b>The results will be displayed at the end of the experiment.</b><br>
+Please, answer the following attention check to be sure you understand the instructions.
+    <br> <i> {{ formfield 'att_check2' }} </i>
+<br>
+<div class="row">
+  <div class="column">
+   <table style="width:100%">
+    <tr>
+      <th>      </th>
+      <th>Project</th>
+      <th>      </th>
+    </tr>
+    <tr>
+     <td>Return Factor</td>
+     <td>Return Factor</td>
+     <td>Return Factor</td>
+   </tr>
+    <tr>
+     <td>0.5</td>
+     <td>3</td>
+     <td>???</td>
+   </tr>
+    <tr>
+     <td>as likely as 3</td>
+     <td>as likely as 0.5</td>
+     <td></td>
+   </tr>
+  </table>
+ </div>
+</div>
+</body>
+<br><br>
+{{ formfield 'investmentA' }}
+<br><br><br>
+{{ formfield 'prob_investment' }}
+<br> <br> <br>
+</div>
+{{ next_button }}
+
+{{ endblock }}
+
